@@ -22,7 +22,7 @@ and open the template in the editor.
 			<div id="indiv" width="100" height="20" >
 			 <a href="home.php"><button>HOME</button></a>
 			 <a href="attendance.php"><button>ATTENDANCE</button></a>
-			 <a href="faculty.php"><button>FACULTIES</button></a>
+			 <a href="faculties.php"><button>FACULTIES</button></a>
 			 <a href="students.php"><button>STUDENTS</button></a>
 			 <a href="contacts.php"><button>CONTACTS</button></a>
 			 <a href="aboutus.php"><button>ABOUT US</button></a>
@@ -48,7 +48,7 @@ and open the template in the editor.
 								<td><input type="number" name="classno" /></td>
 								<td><input type="text" name="bcode" /></td>
 								<td><input type="number" name="semester" /></td>
-								<td><input type="date" name="date" /></td>
+								<td><input type="date" placeholder="YYYY/MM/DD" name="date" /></td>
 							</tr>
 							<tr><td colspan="5"><input type="submit" value="SUBMIT"/>
 			</table>

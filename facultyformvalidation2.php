@@ -9,6 +9,9 @@ if($_POST['submit']=="ADD")
 	
 	$q="insert into faculty select * from facultytemp where fid='$fid'";
 	$result=mysqli_query($con,$q);
+	$q2="delete from facultytemp where fid='$fid'";
+	mysqli_query($con,$q2);
+	
 }	
 elseif($_POST['submit']=="VEIW")
 {

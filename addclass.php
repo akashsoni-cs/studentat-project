@@ -56,13 +56,16 @@ session_start();
 					<td><input type="date" placeholder="DD/MM/YYYY" name="session"></td>
 				</tr>
 				<tr>
-					<td><input type ="submit" value="SUBMIT" name="submit"/>
+					<td><input type ="submit" value="SUBMIT" name="submit"/></td>
 			
 					<a href="home.php"><button>CLOSE</button></a></td>
+					<td><a href="home.php"><button>CLOSE</button></a></td>
 				</tr>
 
 			</table>
 			</th>
 		</tr>
 	</table>
- 
+	</form>
+ </body>
+ </html>

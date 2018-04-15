@@ -10,7 +10,7 @@ session_start();
 <!DOCTYPE html>
     <html>
         <head>
-            <title>Students</title>
+            <title>VieAttendance</title>
 			<link rel="stylesheet" href="login.css" />
 			<style>
 			a
@@ -42,6 +42,7 @@ session_start();
 							  <th>Subject Code</th>
 							  
 							  <th>Branch Code </th>
+							  <th>Semester </th>
 							  
 							  <th>From </th>
 							  <th>To </th>
@@ -51,10 +52,11 @@ session_start();
 								<td><input type="text" name="scode"/></td>
 								
 								<td><input type="text" name="bcode" /></td>
+								<td><input type="number" name="semester" /></td>
 								<td><input type="date" placeholder="YYYY/MM/DD" name="from" /></td>
 								<td><input type="date" placeholder="YYYY/MM/DD" name="to" /></td>
 							</tr>
-							<tr><td colspan="4"><input type="submit" value="SUBMIT"/>
+							<tr><td colspan="5"><input type="submit" value="SUBMIT"/>
 			</table>
 				</th>
 		</tr>

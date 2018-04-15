@@ -12,10 +12,14 @@ session_start();
 $con = mysqli_connect('localhost:3309','root','');
 mysqli_select_db($con,'c_db');
 
-  $q="select * form attendance where studentrollno='$studentrollno' AND scode='$scode' AND bcode='$bcode' AND date='$from';";
+  $q="select * from attendance where studentrollno='$studentrollno' and scode='$scode' AND bcode='$bcode' AND date between '$from' and '$to';";
   $result=mysqli_query($con,$q);
   $num1=mysqli_num_rows($result);
-
+	$q4="SELECT MAX(classno) FROM attendance WHERE scode='$scode';";
+	$result4= mysqli_query($con,$q4);
+	$row=mysqli_fetch_array($result4);
+	$num4=$row['MAX(classno)'];
+	$per=($num1*100)/$num4;
 
 ?>
 <!DOCTYPE html>
@@ -43,7 +47,7 @@ mysqli_select_db($con,'c_db');
 			 <a href="aboutus.php"><button>ABOUT US</button></a>
 			 <a href="logout.php" align="right"><button>LOGOUT</button></a>
 			 </div><br/><br/> 
-		<table width="500" height="200" align = "center"  bgcolor ="blue"border="1px" cellspacing="5" cellpadding="5">
+		<table width="500" height="200" align = "center"  bgcolor ="blue"border="0px" cellspacing="5px" cellpadding="5px">
 		<tr>
 				<th align="left"> <font size="20">Your Attendance :</font>
 					<table bgcolor="lightblue" border="1px" width="480" height="180" size="22">
@@ -57,7 +61,7 @@ mysqli_select_db($con,'c_db');
 							  <th>To </th>
 							  <th>Attendance</th>
 				</tr>
-				<tr>
+				<tr bgcolor="white">
 								
 								<td><?php echo $studentrollno;?> </td>
 								<td><?php echo $scode;?> </td>
@@ -65,7 +69,7 @@ mysqli_select_db($con,'c_db');
 								<td><?php echo $bcode;?> </td>
 								<td><?php echo $from;?> </td>
 								<td><?php echo $to;?> </td>
-								<td><?php echo $num1;?> </td>
+								<td><?php echo $per."%";?> </td>
 				</tr>
 			</table>
 				</th>
