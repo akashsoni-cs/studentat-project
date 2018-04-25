@@ -58,7 +58,6 @@ session_start();
 				<tr>
 					<td><input type ="submit" value="SUBMIT" name="submit"/></td>
 			
-					<a href="home.php"><button>CLOSE</button></a></td>
 					<td><a href="home.php"><button>CLOSE</button></a></td>
 				</tr>
 
