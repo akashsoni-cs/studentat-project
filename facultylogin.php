@@ -26,7 +26,7 @@ and open the template in the editor.
 			<div id="indiv" width="100" height="20" >
 			 <a href="home.php"><button>HOME</button></a>
 			 <a href="attendance.php"><button>ATTENDANCE</button></a>
-			 <a href="faculty.php"><button>FACULTIES</button></a>
+			 <a href="faculties.php"><button>FACULTIES</button></a>
 			 <a href="students.php"><button>STUDENTS</button></a>
 			 <a href="contacts.php"><button>CONTACTS</button></a>
 			 <a href="aboutus.php"><button>ABOUT US</button></a>

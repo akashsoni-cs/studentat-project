@@ -1,11 +1,7 @@
 <?php
  session_start();
-
-
-
 $con = mysqli_connect('localhost:3309','root','');
 mysqli_select_db($con,'c_db');
-
 $fid =$_POST['fid'];
 $bcode=$_POST['bcode'];
 $scode=$_POST['scode'];
@@ -17,12 +13,21 @@ $classno = $_POST['classno'];
 $q1= "select * from teaching where scode='$scode' AND bcode= '$bcode'AND session=2018;";
 $result1 = mysqli_query($con,$q1);
 $vfid=mysqli_fetch_array($result1);
+
+$q4="SELECT MAX(classno) FROM attendance WHERE scode='$scode';";
+$result4= mysqli_query($con,$q4);
+$row=mysqli_fetch_array($result4);
+$num4=$row['MAX(classno)'];
+							
 if($fid!=$vfid['fid'])
 {
 		header('location:http://localhost/project/classdetails.php');
 		
 }
-
+elseif($classno<=$num4)
+{
+	header('location:http://localhost/project/classdetails.php');
+}
 else
 {
 	
@@ -108,9 +113,22 @@ else
 				<td><?php echo $i; ?></td>
 				<td><?php echo $row1['studentrollno']; ?></td>
 				<td><?php echo $row1['studentname']; ?></td>
-				<td><input type="checkbox" value="<?php echo $row1['studentrollno'];?>" 
-				name="s<?php echo $i?>" /></td>
-				<td></td>
+				<td><input type="checkbox" value="<?php echo $row1['studentrollno'];?>" name="s<?php echo $i?>" />
+				<input type="hidden" value="<?php echo $row1['studentrollno'];?>" name="a<?php echo $i?>"/>
+				</td>
+				<?php
+							$studentrollno=$row1['studentrollno'];
+							$q4="SELECT MAX(classno) FROM attendance WHERE scode='$scode';";
+							$result4= mysqli_query($con,$q4);
+							$row=mysqli_fetch_array($result4);
+							$num4=$row['MAX(classno)'];
+							$q5="select * from attendance where scode='$scode' and studentrollno='$studentrollno';";
+							$result5=mysqli_query($con,$q5);
+							$num5=mysqli_num_rows($result5);
+							$per=($num5*100)/$num4;
+					
+				?>		
+				<td><?php echo $per."%";?></td>
 			</tr>
 			<?php
 				}

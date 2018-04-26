@@ -1,27 +1,27 @@
 <?php 
 session_start();
-echo $studentname=$_POST['studentname'];
-echo$studentrollno=$_POST['studentrollno'];
-echo$fathersname=$_POST['fathersname'];
-echo$mothersname=$_POST['mothersname'];
-echo$dob=$_POST['dob'];
-echo$gender=$_POST['gender'];
-echo$studentname=$_POST['studentname'];
-echo$cast=$_POST['cast'];
-echo$address=$_POST['address'];
-echo$mobileno=$_POST['mobileno'];
-echo$parentsno=$_POST['parentsno'];
-echo$email=$_POST['email'];
-echo$studentpicture=$_POST['studentpic'];
-echo$ccode=$_POST['collegecode'];
-echo$cname=$_POST['collegename'];
-echo$bcode=$_POST['coursecode'];
-echo$bname=$_POST['coursename'];
-echo$duration=$_POST['duration'];
-echo$admissiondate=$_POST['admissiondate'];
-echo$semester=$_POST['semester'];
-echo$password=$_POST['password'];
-echo$repassword=$_POST['repassword'];
+$studentname=$_POST['studentname'];
+$studentrollno=$_POST['studentrollno'];
+$fathersname=$_POST['fathersname'];
+$mothersname=$_POST['mothersname'];
+$dob=$_POST['dob'];
+$gender=$_POST['gender'];
+$studentname=$_POST['studentname'];
+$cast=$_POST['cast'];
+$address=$_POST['address'];
+$mobileno=$_POST['mobileno'];
+$parentsno=$_POST['parentsno'];
+$email=$_POST['email'];
+$studentpicture=$_POST['studentpic'];
+$ccode=$_POST['collegecode'];
+$cname=$_POST['collegename'];
+$bcode=$_POST['coursecode'];
+$bname=$_POST['coursename'];
+$duration=$_POST['duration'];
+$admissiondate=$_POST['admissiondate'];
+$semester=$_POST['semester'];
+$password=$_POST['password'];
+$repassword=$_POST['repassword'];
 $con = mysqli_connect('localhost:3309','root','');
 mysqli_select_db($con,'c_db');
 
@@ -30,6 +30,33 @@ $q ="insert into studenttemp(studentrollno,studentname,fathersname,mothersname,d
  mysqli_query($con,$q);
  mysqli_close($con);
  
-header('location:http://localhost/project/studenttemp.php');	
-
 ?>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>StudentRequest</title>
+		<link rel="stylesheet" href="login.css"/>
+	</head>
+	<body>
+	<div>
+                <font size="12">Goverment Polytechnic College Katni</font><br/>
+                <font size="24">Behind Distric Jail Jhinjhri,<br/>Katni 483501 (M.P.)</font>
+			</div>
+			<div id="indiv" width="100" height="20" >
+			 <a href="home.php"><button>HOME</button></a>
+			 <a href="attendance.php"><button>ATTENDANCE</button></a>
+			 <a href="faculty.php"><button>FACULTIES</button></a>
+			 <a href="students.php"><button>STUDENTS</button></a>
+			 <a href="contacts.php"><button>CONTACTS</button></a>
+			 <a href="aboutus.php"><button>ABOUT US</button></a>
+			 <a href="logout.php" align="right"><button>LOGOUT</button></a>
+			</div><br/><br/>
+
+<table width="70%" height="" align = "center"  bgcolor ="lightblue"border="1px" cellspacing="5" cellpadding="5">
+			 <tr><td colspan="2">Dear<?php echo $studentname;?>,Your Request Is Submitted,,,,</td></tr>
+			 <td align="center"><a href="home.php"><button>CLOSE</button></a></td>
+			 
+			</table>
+	</body>
+	</html>

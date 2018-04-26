@@ -6,15 +6,37 @@ mysqli_select_db($con,'c_db');
 	
 if($_POST['submit']=="ADD")
 {
-	$q1="select * from studenttemp where studentrollno='$studentrollno'";
-	$result=mysqli_query($con,$q1);
-	$row1=mysqli_fetch_array($result);
 	
-	$q="insert into student(studentname,studentrollno,fathersname,mothersname,dob,gender,cast,address,mobileno,parentsno,studentpicture,email,ccode,bcode,bname,duration,admissiondate,semester,password) 
-values('$row1['studentname']','$row1'['studentrollno']','$fathersname','$mothersname','$dob','$gender','$cast','$address','$mobileno','$parentsno','$studentpicture','$email','$ccode','$bcode','$bname','$duration','$admissiondate',$semester,'$password');";
- 
-	$q="insert into student values(select * from studenttemp where studentrollno='$studentrollno');";
+	$q="select * from studenttemp where studentrollno='$studentrollno';";
 	$result=mysqli_query($con,$q);
+	$row=mysqli_fetch_array($result);
+	$studentname=$row['studentname'];
+	$studentrollno=$row['studentrollno'];
+	$fathersname=$row['fathersname'];
+	$mothersname=$row['mothersname'];
+	$dob=$row['dob'];
+	$gender=$row['gender'];
+	$studentname=$row['studentname'];
+	$cast=$row['cast'];
+	$address=$row['address'];
+	$mobileno=$row['mobileno'];
+	$parentsno=$row['parentsno'];
+	$email=$row['email'];
+	$studentpicture=$row['studentpicture'];
+	$ccode=$row['ccode'];
+	$cname=$row['cname'];
+	$bcode=$row['bcode'];
+	$bname=$row['bname'];
+	$duration=$row['duration'];
+	$admissiondate=$row['admissiondate'];
+	$semester=$row['semester'];
+	$password=$row['password'];
+	$q ="insert into student(studentrollno,studentname,fathersname,mothersname,dob,gender,cast,address,mobileno,parentsno,studentpicture,email,ccode,bcode,bname,duration,admissiondate,semester,password) values('$studentrollno','$studentname','$fathersname','$mothersname','$dob','$gender','$cast','$address','$mobileno','$parentsno','$studentpicture','$email','$ccode','$bcode','$bname','$duration','$admissiondate',$semester,'$password');";
+ 
+	mysqli_query($con,$q);
+	$q2="delete from studenttemp where studentrollno='$studentrollno'";
+	mysqli_query($con,$q2);
+
 }	
 elseif($_POST['submit']=="VEIW")
 {
@@ -166,4 +188,5 @@ elseif($_POST['submit']=="DELETE")
 	$q2="delete from studenttemp where studentrollno='$studentrollno'";
 	mysqli_query($con,$q2);
 }
+mysqli_close($con);
 ?>

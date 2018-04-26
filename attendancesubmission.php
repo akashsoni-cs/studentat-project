@@ -12,6 +12,7 @@ $classno = $_POST['classno'];
 $q2 = "select studentrollno from studentsubject where scode='$scode' AND semester='$semester';";
 	$result2= mysqli_query($con,$q2);
 	$num1=mysqli_num_rows($result2);
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,11 +85,12 @@ $q2 = "select studentrollno from studentsubject where scode='$scode' AND semeste
 					<?php
 						
 						$index="s".$i;
+						$index1="a".$i;
 						if(isset($_POST[$index]))
 						{
 							$studentrollno=$_POST[$index];
 							
-							$q = "insert into attendance(studentrollno,scode,date,classno) values('$studentrollno','$scode','$date',$classno);";
+							$q ="insert into attendance(studentrollno,scode,date,classno) values('$studentrollno','$scode','$date',$classno);";
 							mysqli_query($con,$q);
 					?>
 							<td><?php echo "P"?></td>
@@ -101,19 +103,31 @@ $q2 = "select studentrollno from studentsubject where scode='$scode' AND semeste
 							<td><?php echo "A"?></td>
 							<?php
 						}
-					
-					?>
-							<td></td>
+						$studentrollno=$_POST[$index1];
+						if(isset($studentrollno))
+						{
+							$q4="SELECT MAX(classno) FROM attendance WHERE scode='$scode';";
+							$result4= mysqli_query($con,$q4);
+							$row=mysqli_fetch_array($result4);
+							$num4=$row['MAX(classno)'];
+
+							$q5="select * from attendance where scode='$scode' and studentrollno='$studentrollno';";
+							$result5=mysqli_query($con,$q5);
+							$num5=mysqli_num_rows($result5);
+							$per=($num5*100)/$num4;
+						
+						?>
+							<td><?php echo $per."%" ;?></td>
 					</tr>
 			<?php
-			
+						}
 				$i++;
 				}
 			?>
 		</table>
 			<table width="70%" height="100%" align = "center"  bgcolor ="lightblue"border="1px" cellspacing="5" cellpadding="5">
 			 <tr><td colspan="2">Attendance Submitted,,,,</td></tr>
-			 <tr><td><a href="veiwattendance.php"><button>VEIW ATTENDANCE</button></a></td>
+			 <tr><td><a href="viewattendance.php"><button>VEIW ATTENDANCE</button></a></td>
 			 <td><a href="home.php"><button>CLOSE</button></a></td>
 			 
 			</table>

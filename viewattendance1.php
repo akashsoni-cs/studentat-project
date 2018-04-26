@@ -10,7 +10,7 @@ session_start();
 <!DOCTYPE html>
     <html>
         <head>
-            <title>Students</title>
+            <title>ViewAttendance</title>
 			<link rel="stylesheet" href="login.css" />
 			<style>
 			a
@@ -33,8 +33,7 @@ session_start();
 			 <a href="logout.php" align="right"><button>LOGOUT</button></a>
 			 </div><br/><br/>
 	<form name="Attendance" action="viewattendance3.php" method="POST"> 
-		<table width="500" height="200" align = "center"  bgcolor ="blue"border="1px" cellspacing="5" cellpadding="5">
-		<tr>
+		<table width="500" height="200" align = "center"  bgcolor ="blue"border="1px" cellspacing="5" cellpadding="5">		<tr>
 				<th align="left"> <font size="20">Enter Details :</font>
 					<table bgcolor="lightblue" border="1px" width="480" height="180" size="22">
 				<tr>
